@@ -19,6 +19,7 @@ class Thread_example:
 
     See Prime statistic for a working example.
     """
+
     def __init__(self, nb_thread_process=3):
 
         # NB of Thread for process
@@ -45,13 +46,15 @@ class Thread_example:
 
         # THREAD init:
         for x in range(self.nb_thread_process):
-            t = threading.Thread(target=self.worker)
+            t = threading.Thread(target=self.worker) #args=() to pass argument in the function
             #  classifying as a daemon, so they will die when the main dies
             t.daemon = True
             #  begins, must come after daemon definition
             t.start()
             list_thread.append(t)
 
+        # joining the thread will make the function wait until all thread are
+        # finished before continuing
         for t in list_thread:
             t.join()
 
