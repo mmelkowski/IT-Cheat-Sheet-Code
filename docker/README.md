@@ -28,7 +28,7 @@ This file is a plain text using the keyword in the table below
 | CMD | Define the default command that is executed once you start the container |
 | ENTRYPOINT | Set the default program to execute, upon running the containner argument will be passed to the program set as entrypoint |
 
-These are the major keyword use. A complete list can be found in the [official Docker documentation](https://duckduckgo.com).
+These are the major keyword use. A complete list can be found in the [official Docker documentation](https://docs.docker.com/).
 
 ### Example of Dockerfile
 
@@ -45,15 +45,17 @@ Here the docker file will be based on the tiny micromamba release and will insta
 ### Docker image creation (docker build)
 
 ```bash
-docker build --file <dockerfile> --tag <image>:<version>
+docker build --file <dockerfile> --tag <image>:<version> <context_path>
 ```
+
+The context path is the location from where the image will be build.
 
 ## 2) From image to container
 
 Now that an image is build we can start a container using the command `docker run`.
 
 ```bash
-(local) $ docker run <image>:<version>
+docker run <image>:<version>
 ```
 
 Many more options are available such as:
@@ -70,11 +72,11 @@ Many more options are available such as:
 Example:
 
 ```bash
-(local) $ docker run --name "myContainer" -it -v /path/to/workfolder:/workfolder --entrypoint "/bin/bash" <image>:<version>
-(container) $ ls -lh /workfolder
+docker run --name "myContainer" -it -v /path/to/workfolder:/workfolder --entrypoint "/bin/bash" <image>:<version>
+(in container) $ ls -lh /workfolder
 
-(local) $ docker stop "myContainer"
-(local) $ docker rm -v "myContainer"
+docker stop "myContainer"
+docker rm -v "myContainer"
 ```
 
 As you can starting a container is great but stopping it is better. The command `docker stop` and `docker rm` will help you get rid of those pesky background container.
@@ -84,7 +86,7 @@ If the container is suppose to have a one time use its even better to directly u
 If you just need to run a single command you can directly pass it to the containner:
 
 ```bash
-(local) $ docker run --name "myContainer" --user 1000:1000 -v /path/to/workfolder:/workfolder --entrypoint "/bin/bash" <image>:<version> -c "ls -lh /workfolder"
+docker run --name "myContainer" --user 1000:1000 -v /path/to/workfolder:/workfolder --entrypoint "/bin/bash" <image>:<version> -c "ls -lh /workfolder"
 ```
 
 ## 4) Unusual building (docker commit)
@@ -92,16 +94,16 @@ If you just need to run a single command you can directly pass it to the contain
 Assuming a container was edited you might want to save it as a new image by using the `docker commit` command:
 
 ```bash
-(local) $ docker commit <container_id> <image>:<version>
+docker commit <container_id> <image>:<version>
 ```
 
 You can even edit the docker image entrypoint:
 
 ```bash
-(local) $ docker commit --change='ENTRYPOINT ["/src/foo.sh"]' <container_id> <image>:<version>
+docker commit --change='ENTRYPOINT ["/src/foo.sh"]' <container_id> <image>:<version>
 ```
 
-## 5) Sharing is caring
+## 5) Image management: sharing is caring
 
 An image can be save locally to be transfered on remote server or friendly co-worker.
 
@@ -117,7 +119,38 @@ docker save --output image_docker.tar <image>:<version>
 docker load --input image_docker.tar
 ```
 
-## 6) For more on youtube
+### Remove
+
+If you generated a wrong image or its no longer in use it can be removed using `docker remove`
+
+```bash
+docker image remove <image>:<version>
+```
+
+## 6) Testing: practice makes perfect
+
+in the folder `test` you can find the dockerfile presented above:
+
+### → Build-it
+
+```bash
+cd /path/to/docker/test
+docker image build --file Dockerfile --tag mydockertest:1.0.0 .
+```
+
+### → Run-it
+
+```bash
+docker run --rm mydockertest:1.0.0
+```
+
+### → Delete-it
+
+```bash
+docker image remove mydockertest:1.0.0 
+```
+
+## 7) For more on youtube
 
 ### A short explenation by fireship.io
 
