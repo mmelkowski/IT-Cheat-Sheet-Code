@@ -1,2 +1,11 @@
-# Python-Cheat-Sheet-Code
-Ce repertoire contient plusieurs exemples de codes utiles et pratiques 
+# IT-Cheat-Sheet-Code
+
+This repository contains multiple tutorial and cheat-sheet for diverse topics
+
+Any folder should represent a topic or technoology, a README file should be present at minimum.
+
+The following technolgies are discussed:
+
+* Docker
+* Python
+* Snakemake
