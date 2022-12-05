@@ -4,7 +4,7 @@ As Wikipedia say:
 
 > *Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers.*
 
-TLDR: An environnement in a can
+TLDR: *An environnement in a can*
 
 This folder aim to give a basic knowledge of Docker usage for environement virtualisation
 
@@ -129,7 +129,7 @@ docker image remove <image>:<version>
 
 ## 6) Testing: practice makes perfect
 
-in the folder `test` you can find the dockerfile presented above:
+in the folder `test` you can find the dockerfile presented above, it will create a small image containing diverse python module and will print the complete environment if run.
 
 ### → Build-it
 
@@ -154,8 +154,8 @@ docker image remove mydockertest:1.0.0
 
 ### A short explenation by fireship.io
 
-https://www.youtube.com/watch?v=gAkwW2tuIqE
+[Docker in 100 Seconds](https://www.youtube.com/watch?v=Gjnup-PuquQ).
 
 ### A longer explenation by fireship.io
 
-https://www.youtube.com/watch?v=Gjnup-PuquQ
+[Learn Docker in 7 Easy Steps](https://www.youtube.com/watch?v=gAkwW2tuIqE).
