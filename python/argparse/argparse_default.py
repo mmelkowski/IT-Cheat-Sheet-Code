@@ -19,8 +19,8 @@ def arguments_parser():
     :return: Object
     '''
     parser = argparse.ArgumentParser(
-        description='Prepare the working directory for targeted analysis.',
-        usage='{} --study_name STUDY_NAME --archive PATH/ARCHIVE.tar.gz --md5file_name FILE_NAME.md5 --metadata_file_name FILE_NAME.yaml --schema PATH/SCHEMA.json --target_directory TARGET_PATH'.format(
+        description='Do something.',
+        usage='{} --input INPUT --output OUTPUT'.format(
             os.path.basename(__file__)),
         formatter_class=argparse.RawTextHelpFormatter)
 
@@ -57,15 +57,17 @@ def arguments_parser():
     return parser
 
 
+def main(input):
+    return type(input)
+
+
 def entrypoint():
     # Get CLI Args values:
     arguments_parser_obj = arguments_parser()
     args = arguments_parser_obj.parse_args()
 
     # do something
-    print(args.input)
-    # parametersLogger(args)
-    # main(arguments_parser, args)
+    main(args.input)
 
 
 if __name__ == "__main__":

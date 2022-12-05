@@ -9,5 +9,7 @@ The following topics are explained:
 * Customize-in-class_With-Statement
 * List-Dict-Generator_Comprehension
 * logging
+* multi-processing
+* Script Template
 * Threading
 * Tk-inter
