@@ -6,6 +6,9 @@ Any folder should represent a topic or technoology, a README file should be pres
 
 The following technolgies are discussed:
 
+* awk
+* bash
 * Docker
+* Linux setup
 * Python
 * Snakemake
