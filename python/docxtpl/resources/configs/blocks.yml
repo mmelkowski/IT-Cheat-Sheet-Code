@@ -1,0 +1,3 @@
+test_template:
+  template_name: test_template.docx
+  schema_name: test_template.json

@@ -1,0 +1,11 @@
+test_template:
+  content:
+    foo: oof
+    bar: rab
+    fizz: zzif
+    buzz: zzub
+  list_example:
+  - name: item_1
+    content: "item_1 content here"
+  - name: item_2
+    content: "item_2 content here"

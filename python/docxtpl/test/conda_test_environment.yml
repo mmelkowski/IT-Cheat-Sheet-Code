@@ -1,0 +1,11 @@
+name: docxtpl_test
+channels:
+  - conda-forge
+  - bioconda
+  - anaconda
+dependencies:
+  - pyyaml
+  - docxtpl
+  - docxcompose
+  - jsonschema
+always_yes: true

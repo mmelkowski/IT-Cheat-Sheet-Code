@@ -1,0 +1,12 @@
+{
+    "type": "object",
+    "properties": {
+        "sample": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "sample"
+    ],
+    "additionalProperties": true
+}
