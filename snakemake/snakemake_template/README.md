@@ -41,15 +41,15 @@ rule metaquast:
 
 ## Workflow usage
 
-### local mode
+### Local mode
+
+* Create environement
 
 ```bash
 mamba create -c conda-forge -c bioconda -n snakemake snakemake
 ```
 
-### Run workflow
-
-* From the command line
+* Run workflow
 
 ```bash
 snakemake --profile config/profile/test
@@ -69,7 +69,7 @@ docker build -t <name> .
 docker run --rm --mount type=bind,src=$PWD/config/,dst=/pipeline/config --mount type=bind,src=$PWD/results/,dst=/pipeline/results <name> --profile config/profiles/test
 ```
 
-* Or from docker container
+* Or from inside a docker container
 
 ```bash
 docker run --rm -it --mount type=bind,src=$PWD/config/,dst=/pipeline/config --mount type=bind,src=$PWD/results/,dst=/pipeline/results --entrypoint '/bin/bash' <name>
