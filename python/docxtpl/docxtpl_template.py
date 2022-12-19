@@ -13,6 +13,15 @@ from docxcompose.composer import Composer
 from docxtpl import DocxTemplate, InlineImage
 
 
+# Quick loggging function
+def log_info(*args):
+    print("[docxtpl_template][INFO]", *args)
+
+
+def log_error(*args):
+    print("[docxtpl_template][ERROR]", *args)
+
+
 def arguments_parser():
     '''
     Arguments parsing.
@@ -70,7 +79,7 @@ def main(args):
     Main function
     '''
 
-    print("[docxtpl_template][INFO]: Generation from", args.input)
+    log_info("Generation from", args.input)
 
     data = read_yaml(args.input)
     dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -97,8 +106,8 @@ def main(args):
         composer.append(block)
         os.remove(tmp_file)
     composer.save(args.output)
-    
-    print("[docxtpl_template][INFO]: Document saved as", args.output)
+
+    log_info("Document saved as", args.output)
 
 
 if __name__ == '__main__':
