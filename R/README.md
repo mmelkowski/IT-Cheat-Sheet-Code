@@ -14,3 +14,5 @@ Example of [best practice](https://bookdown.org/content/d1e53ac9-28ce-472f-bc2c-
 [VS Code guide](https://code.visualstudio.com/docs/languages/r)
 
 [R for Data Science](https://r4ds.had.co.nz/) online book.
+
+[Tidyverse tuto](https://juba.github.io/tidyverse/06-tidyverse.html)
