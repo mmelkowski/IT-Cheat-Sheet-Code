@@ -1,0 +1,21 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+description: row of the units.tsv, representing a sequencing unit.
+type: object
+properties:
+    sample_id:
+        type: string
+        description: sample unique identification
+    fq1:
+        type: string
+        description: FASTQ file
+    fq2:
+        type: string
+        description: FASTQ file
+    ref:
+        type: string
+        description: Reference file
+required:
+    - sample_id
+    - fq1
+    - fq2
+    - ref

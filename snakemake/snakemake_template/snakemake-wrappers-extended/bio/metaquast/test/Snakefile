@@ -1,0 +1,12 @@
+rule metaquast:
+    input:
+        contigs=["contigs1.fasta", "contigs2.fasta"],
+        ref="genome.fasta",
+    output:
+        directory("metaquast_out"),
+    log:
+        "logs/metaquast.log",
+    params:
+        extra="--min-contig 5 --min-identity 95.0",
+    wrapper:
+        "main/bio/metaquast"

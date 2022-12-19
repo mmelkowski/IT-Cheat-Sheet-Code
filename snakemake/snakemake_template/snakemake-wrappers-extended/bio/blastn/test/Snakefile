@@ -1,0 +1,12 @@
+rule blastn:
+    input:
+        "query.fa",
+    output:
+        "blastn.out",
+    log:
+        "blastn.log",
+    params:
+        extra="",
+        database="database.fa",
+    wrapper:
+        "main/bio/blastn"

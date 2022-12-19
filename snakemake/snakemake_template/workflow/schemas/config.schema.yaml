@@ -1,0 +1,10 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+description: snakemake configuration file
+
+type: object
+
+required:
+  - units
+  - outdir
+  - input_dir

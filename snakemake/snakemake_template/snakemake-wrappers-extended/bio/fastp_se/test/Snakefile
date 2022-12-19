@@ -1,0 +1,14 @@
+rule fastp_se:
+    input:
+        single="single.fastq",
+    output:
+        trimmed="fastp_se.fastq",
+        html="fastp_se.html",
+        json="fastp_se.json",
+    log:
+        "logs/fastp_se.log",
+    threads: 2
+    params:
+        extra="",
+    wrapper:
+        "main/bio/fastp_se"

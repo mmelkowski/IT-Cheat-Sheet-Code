@@ -1,0 +1,16 @@
+stages:
+  - Validation
+image: continuumio/miniconda3:latest # Default image to be used for all jobs, we can have job specific images
+.before_script_template:
+  before_script:
+    - conda install -c conda-forge mamba
+    - mamba create -n snakemake -c conda-forge -c bioconda snakemake
+    - conda config --set channel_priority strict
+pytest: # Job name
+  extends: .before_script_template
+  tags:
+    - docker # Specify the runner you want to use (in this case it has to be a runner with a docker executor) i.e : patho_runner_01
+  stage: Validation # We can have multiple jobs in the same stage
+  script:
+    - pytest test.py
+  only: ["main"] # Takes branch names or events like merge requests

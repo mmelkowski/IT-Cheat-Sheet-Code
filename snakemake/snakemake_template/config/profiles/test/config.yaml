@@ -1,0 +1,5 @@
+keep-going: true
+use-conda: true
+latency-wait: 20
+cores: 2
+dry-run: false

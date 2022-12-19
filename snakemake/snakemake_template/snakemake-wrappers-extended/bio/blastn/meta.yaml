@@ -1,0 +1,11 @@
+name: blastn
+description: |
+  Homology search of query sequences in an indexed database
+url: https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs
+input:
+  - query sequences in FASTA format
+output:
+  - blast output in TABULAR format
+notes: |
+  * The `extra` param allows for additional program arguments.
+  * `database` we specify a database to blast against, for archiving purposes it's best to specify it as a param rather than an input

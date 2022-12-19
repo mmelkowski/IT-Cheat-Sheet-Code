@@ -1,0 +1,8 @@
+name: bwa_index
+description: |
+  Alignement software used for indexing
+url: https://bio-bwa.sourceforge.net/bwa.shtml
+input:
+  - ref file in FASTA format
+output:
+  - indexing files

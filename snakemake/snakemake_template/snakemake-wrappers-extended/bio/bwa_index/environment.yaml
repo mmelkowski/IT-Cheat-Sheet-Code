@@ -1,0 +1,5 @@
+name: bwa_mem_pe
+channels:
+  - bioconda
+dependencies:
+  - bwa=0.7.15

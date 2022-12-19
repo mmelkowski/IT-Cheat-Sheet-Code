@@ -1,0 +1,9 @@
+name: metaquast
+channels:
+  - conda-forge
+  - bioconda
+  - anaconda
+dependencies:
+  - quast=5.2.0
+  - krona=2.8.1
+  - make=4.2.1

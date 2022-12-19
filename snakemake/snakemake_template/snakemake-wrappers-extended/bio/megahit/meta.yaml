@@ -1,0 +1,19 @@
+name: megahit
+description: |
+  Metagenomics assembly
+url: https://github.com/voutcn/megahit
+input:
+  - fq1 reads in FASTQ format
+  - fq2 reads in FASTQ format
+output:
+  - contigs in FASTA format
+  - directory
+notes: |
+  * The `extra` param allows for additional program arguments.
+  * `min-contig-len` defines threshold at which an assembly is considered a valid contigs
+  * `prefix` to be used for contigs file naming
+  * named inputs requires, single for single end, fq1|fq2 for paired end
+  * named outputs
+    * out_dir : output directory
+    * contigs : contigs file
+    * megahit forcefully appends .contigs.fa to your {out_dir}/{prefix} , take into consideration when naming your outputs

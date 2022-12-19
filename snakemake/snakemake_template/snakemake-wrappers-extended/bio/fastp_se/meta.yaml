@@ -1,0 +1,13 @@
+name: fastp_se
+description: |
+  Adapter trimming, read quality assessment and deduplication
+url: https://github.com/OsnGene/fastp
+input:
+  - fq reads in FASTQ format
+output:
+  - Trimmed fq in FASTQ format
+  - HTML report
+  - json report
+notes: |
+  * The `extra` param allows for additional program arguments.
+  * `-D` param tells fastp to srform deduplication

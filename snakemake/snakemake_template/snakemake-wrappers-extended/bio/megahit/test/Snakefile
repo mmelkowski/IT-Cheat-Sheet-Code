@@ -1,0 +1,16 @@
+rule megahit:
+    input:
+        fq1="fq1.fastq",
+        fq2="fq2.fastq",
+    output:
+        contigs="megahit_out/final.contigs.fa",
+        out_dir=directory("megahit_out"),
+    log:
+        "logs/fastp_pe.log",
+    threads: 2
+    params:
+        extra="",
+        minlen=50,
+        prefix="final",
+    wrapper:
+        "main/bio/megahit"

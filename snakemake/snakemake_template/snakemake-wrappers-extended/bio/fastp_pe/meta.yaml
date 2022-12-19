@@ -1,0 +1,15 @@
+name: fastp_pe
+description: |
+  Adapter trimming, read quality assessment and deduplication
+url: https://github.com/OpenGene/fastp
+input:
+  - fq1 reads in FASTQ format
+  - fq2 reads in FASTQ format
+output:
+  - Trimmed fq1 in FASTQ format
+  - Trimmed fq2 in FASTQ format
+  - HTML report
+  - json report
+notes: |
+  * The `extra` param allows for additional program arguments.
+  * `-D` param tells fastp to perform deduplication

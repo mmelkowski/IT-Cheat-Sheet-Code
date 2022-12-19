@@ -1,0 +1,11 @@
+name: metaquast
+description: |
+  Quality assessment tool for metagenome Assemblies
+url: https://github.com/ablab/quast/blob/master/metaquast.py
+input:
+  - Sequences in FASTA format
+output:
+  - Directory
+  - html report
+notes: |
+  * The `extra` param allows for additional program arguments.

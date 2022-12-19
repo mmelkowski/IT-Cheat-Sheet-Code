@@ -1,0 +1,16 @@
+rule fastp_pe:
+    input:
+        fq1="fq1.fastq",
+        fq2="fq2.fastq",
+    output:
+        trimmed_fq1="fastp_1.fastq",
+        trimmed_fq2="fastp_2.fastq",
+        html="fastp_pe.html",
+        json="fastp_pe.json",
+    log:
+        "logs/fastp_pe.log",
+    threads: 2
+    params:
+        extra="",
+    wrapper:
+        "main/bio/fastp_pe"

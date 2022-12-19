@@ -1,0 +1,3 @@
+units: "config/units.tsv"
+outdir: "results"
+input_dir: ".tests/data"

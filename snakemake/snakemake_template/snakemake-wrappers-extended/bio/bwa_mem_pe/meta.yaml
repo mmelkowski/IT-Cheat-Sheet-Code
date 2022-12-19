@@ -1,0 +1,10 @@
+name: bwa_mem_pe
+description: |
+  Alignement software
+url: https://bio-bwa.sourceforge.net/bwa.shtml
+input:
+  - fq1 reads in FASTQ format
+  - fq2 reads in FASTQ format
+  - ref file in FASTA format
+output:
+  - Alignment file in SAM format
