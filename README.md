@@ -2,13 +2,14 @@
 
 This repository contains multiple tutorial and cheat-sheet for diverse topics
 
-Any folder should represent a topic or technoology, a README file should be present at minimum.
+Any folder should represent a topic or technology, a README file should be present at minimum.
 
-The following technolgies are discussed:
+The following technologies are discussed:
 
-* awk
-* bash
+* Awk
+* Bash
 * Docker
 * Linux setup
 * Python
+* R
 * Snakemake

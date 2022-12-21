@@ -20,7 +20,12 @@ See [spins](https://spins.fedoraproject.org/) for other environment for fedora s
 
 ## Console: Oh My Zsh
 
-### customization
+Favorite theme:
+
+* [agnoster](https://github.com/agnoster/agnoster-zsh-theme)
+* [powerlevel10k](https://github.com/romkatv/powerlevel10k)
+
+### Customization
 
 Use of agnoster theme with added time inside the command line.
 
