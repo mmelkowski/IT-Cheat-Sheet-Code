@@ -1,0 +1,59 @@
+---
+title: "Report"
+author: "USER"
+date: "`r format(Sys.time(), '%d %B %Y - %H:%M:%S')`"
+params:
+   rmd: "report.Rmd"
+output:
+  html_document:
+    toc: TRUE
+    toc_float:
+      collapsed: FALSE
+    toc_depth: 3
+    code_folding: "hide"
+    theme: united
+    highlight: tango
+    number_sections: TRUE
+editor_options: 
+  chunk_output_type: console
+---
+
+<style>
+body {
+text-align: justify}
+</style>
+
+- Contact E-mail: [mail@yahoo.com](mailto:mail@yahoo.com)
+- Sequencing Platform: [Oxford Nanopore Technology](https://nanoporetech.com) / [Illumina](https://www.illumina.com)
+
+```{r setup, include=FALSE}
+log <- file(snakemake@log$log_file, open = "wt")
+sink(log)
+sink(log, type = "message")
+
+knitr::opts_chunk$set(echo = TRUE)
+# Fonction to install / load package if it's not here
+library(rlang)
+library(tidyverse, quietly = TRUE, warn.conflicts = FALSE)
+library(data.table, quietly = TRUE, warn.conflicts = FALSE)
+#library(tidylog, quietly = TRUE, warn.conflicts = FALSE) # avoid waring in prod
+library(heatmaply, quietly = TRUE, warn.conflicts = FALSE)
+library(reactable, quietly = TRUE, warn.conflicts = FALSE)
+library(jsonlite, quietly = TRUE, warn.conflicts = FALSE)
+library(gt, quietly = TRUE, warn.conflicts = FALSE)
+library(gggenes, quietly = TRUE, warn.conflicts = FALSE)
+```
+
+```{r input_and_params, include=FALSE}
+if (!base::is.null(snakemake@input[["fasta"]])) { fasta_file <-snakemake@input[["fasta"]]
+  } else { fasta_file <- 'not_available'}
+
+## params
+params_smk <- as.numeric(snakemake@params[["params_smk"]])
+```
+
+
+```{r logfile_input, include=FALSE}
+writeLines("Input files:", log)
+writeLines(glue::glue("fasta_file <- {fasta_file}"), log)
+```
