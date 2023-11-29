@@ -5,6 +5,11 @@ from snakemake.utils import validate
 
 configfile: "config/config.yaml"
 
+# Threads value determination from workflow.cores
+thread_high = workflow.cores
+thread_medium = max((workflow.cores * 0.5)//1, 1)
+thread_low = max((workflow.cores * 0.25)//1, 1)
+thread_one = 1
 
 # Feed your units.tsv file to snakemake with pandas and set an index : <TEMPLATE.CHANGE>
 units = pd.read_csv(config["units"], dtype=str, sep="\t").set_index(

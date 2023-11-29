@@ -12,7 +12,7 @@ rule fastp_paired:
     params:
         extra="-l 60"
     threads:
-        1
+        thread_medium
     wrapper:
         "file:snakemake-wrappers-extended/bio/fastp_pe"
 
