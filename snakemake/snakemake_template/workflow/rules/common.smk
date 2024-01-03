@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 from snakemake.utils import validate
+from pathlib import Path
 
 
 configfile: "config/config.yaml"
@@ -12,9 +13,32 @@ thread_low = max((workflow.cores * 0.25)//1, 1)
 thread_one = 1
 
 # Feed your units.tsv file to snakemake with pandas and set an index : <TEMPLATE.CHANGE>
-units = pd.read_csv(config["units"], dtype=str, sep="\t").set_index(
-    ["sample_id"], drop=False
+samples = (
+    pd.read_csv(
+        config["samples"],
+        sep="\t",
+        dtype={"sample": str, "platform": str},
+        comment="#",
+    )
+    .set_index("sample", drop=False)
+    .sort_index()
 )
+
+# Feed your units.tsv file to snakemake with pandas and set an index : <TEMPLATE.CHANGE>
+units = (
+    pd.read_csv(
+        config["units"],
+        sep="\t",
+        dtype={"sample": str},
+        comment="#",
+    )
+    .set_index(["sample"], drop=False)
+    .sort_index()
+)
+
+# Validate config and units files following a predefined schema
+validate(config, schema="../schemas/config.schema.yaml")
+validate(units, schema="../schemas/units.schema.yaml")
 
 # safeguard user provided outdir in case a trailing "/" is used
 outdir = os.path.join(config["outdir"], "").rstrip("/")
@@ -35,6 +59,43 @@ def get_fastq_f2(wildcards):
 def get_ref(wildcards):
     return os.path.join(input_dir, units.loc[wildcards.sample_id, "ref"])
 
-# Validate config and units files following a predefined schema
-validate(config, schema="../schemas/config.schema.yaml")
-validate(units, schema="../schemas/units.schema.yaml")
+# Other example of basic/input function
+def get_raw_illumina_data(wildcards):
+    if  pd.notnull(illumina_units.loc[wildcards.sample_id, 'fq2']):
+        # paired end local sample
+        return [f"{config['local_data']}/{Path(illumina_units.loc[wildcards.sample_id, 'fq1']).name}", 
+                f"{config['local_data']}/{Path(illumina_units.loc[wildcards.sample_id, 'fq2']).name}"]
+    else:
+        # single end local sample
+        return [f"{config['local_data']}/{Path(illumina_units.loc[wildcards.sample_id, 'fq1']).name}"]
+
+def get_fastp_output(wildcards):
+    if pd.notnull(illumina_units.loc[wildcards.sample_id, 'fq2']):
+        return [f"results/{wildcards.sample_id}/illumina/preprocessing/{wildcards.sample_id}_R1_trimmed.fastq.gz",
+                f"results/{wildcards.sample_id}/illumina/preprocessing/{wildcards.sample_id}_R2_trimmed.fastq.gz"]
+    else:
+        return [f"results/{wildcards.sample_id}/illumina/preprocessing/{wildcards.sample_id}.fastq.gz"]
+
+# Input function can be called like regular python function to use already written output
+def get_chain_input(wildcards):
+    return ",".join(get_fastp_output(wildcards))
+
+# input function for a rule with unpack
+def get_report_file(wildcards):
+    report_dict = {}
+    ILL = {
+            "fastp" : f"results/{wildcards.sample_id}/illumina/preprocessing/{wildcards.sample_id}_fastp.json"
+    }
+
+    ONT = {
+            "NanoStats" : f"results/{wildcards.sample_id}/ont/nanoplot/{wildcards.sample}_NanoStats.txt",
+    }
+
+    if "ILL" in units:
+        report_dict.update(ILL)
+
+    elif "ONT" in units:
+        report_dict.update(ONT)
+
+    return report_dict
+
