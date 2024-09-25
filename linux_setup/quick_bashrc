@@ -1,0 +1,11 @@
+Quick edit of PS1 in bashrc file:
+
+
+if [ "$color_prompt" = yes ]; then
+    PS1="\[\$(date +'%Y-%m-%d %H:%M:%S') \]\\[\e[31m\]\`nonzero_return\`\[\e[m\]\[\e[33m\][\u@\h]\[\e[m\]\[\e[36m\]\`gitbranch_return\`\[\e[m\] \[\e[34m\]\w\[\e[m\]\n\[\e[1;38m\]\\$\[\e[m\] "
+    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1="\[\$(date +'%Y-%m-%d %H:%M:%S') \]\\[\e[31m\]\`nonzero_return\`\[\e[m\]\[\e[33m\][\u@\h]\[\e[m\]\[\e[36m\]\`gitbranch_return\`\[\e[m\] \[\e[34m\]\w\[\e[m\]\n\[\e[1;38m\]\\$\[\e[m\] "
+    #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
